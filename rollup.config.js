@@ -80,6 +80,10 @@ export default {
     input: config.server.input(),
     output: config.server.output(),
     plugins: [
+      json({
+        exclude: "node_modules/**",
+        compact: true
+      }),
       replace({
         "process.browser": false,
         "process.env.NODE_ENV": JSON.stringify(mode)

@@ -1,31 +1,28 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
   export let baseUrl = "";
+
+  const dispatch = createEventDispatcher();
+
   let imageUrl = baseUrl + "s.jpg";
-  let isBig = false;
 
-  function viewBig() {
-    if (imageUrl.indexOf("s.") > 0) {
-      imageUrl = baseUrl + ".jpg";
-      isBig = true;
-    } else {
-      imageUrl = baseUrl + "s.jpg";
-      isBig = false;
-    }
+  function imageClick() {
+    dispatch("click", {
+      baseUrl: baseUrl
+    });
   }
-
-  // document.addEventListener("contextmenu", event => event.preventDefault());
 </script>
 
 <style>
   img {
     transition: all 0.1s;
-    border-radius: 5px;
     border: solid 1px black;
     cursor: pointer;
   }
 
   .smallImage:hover {
-    transform: scale(1.1);
+    box-shadow: 0 0 10px #000000c4;
   }
 
   .bigImage {
@@ -38,7 +35,6 @@
     e.preventDefault();
   }}
   src={imageUrl}
-  class:bigImage={isBig}
-  class:smallImage={!isBig}
-  on:click={viewBig}
+  class="smallImage"
+  on:click={imageClick}
   alt="elvira" />
