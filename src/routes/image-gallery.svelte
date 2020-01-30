@@ -2,7 +2,7 @@
   import images from "../components/images.json";
   import ImageGrid from "../components/image-grid.svelte";
 
-  let selectedImage = "";
+  let selectedImage = images.filenames[0] + ".jpg";
 
   function imageSelected(e) {
     selectedImage = e.detail.url;
