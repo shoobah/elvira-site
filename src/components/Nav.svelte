@@ -69,9 +69,7 @@
 </div>
 <div class="menu">
   <span>
-    <a
-      class={segment === 'image-gallery' ? 'selected' : ''}
-      href="image-gallery">
+    <a class={segment === undefined ? 'selected' : ''} href="/">
       image-gallery
     </a>
   </span>

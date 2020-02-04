@@ -1,46 +1,35 @@
+<script>
+  import images from "../components/images.json";
+  import ImageGrid from "../components/image-grid.svelte";
+  import BigImage from "../components/big-image.svelte";
+
+  let selectedImage = images.filenames[0] + ".jpg";
+
+  function imageSelected(e) {
+    selectedImage = e.detail.url;
+  }
+</script>
+
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
-	}
+  .image-gallery {
+    display: grid;
+    grid-template-columns: [grid] 100px [image] 6fr;
+  }
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	figure {
-		margin: 0 0 1em 0;
-	}
-
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
+  .the-grid-wrapper {
+    grid-column: grid;
+    padding: 0 5px;
+  }
+  .the-image-wrapper {
+    grid-column: image;
+  }
 </style>
 
-<svelte:head>
-	<title>Sapper project template</title>
-</svelte:head>
-
-<h1>Great success!</h1>
-
-<figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
-</figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<div class="image-gallery">
+  <div class="the-grid-wrapper">
+    <ImageGrid {images} on:select={imageSelected} cssClass="the-grid" />
+  </div>
+  <div class="the-image-wrapper">
+    <BigImage url={selectedImage} />
+  </div>
+</div>
