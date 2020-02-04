@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import Image from "./image.svelte";
+  import Thumb from "./thumbnail.svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -26,7 +26,7 @@
 <div class="{cssClass} image-grid">
   {#if images.filenames}
     {#each images.filenames as i}
-      <Image baseUrl={i} on:click={imageClicked} />
+      <Thumb baseUrl={i} on:click={imageClicked} />
     {/each}
   {/if}
 </div>

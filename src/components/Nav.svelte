@@ -3,62 +3,79 @@
 </script>
 
 <style>
-  nav {
-    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
-    font-weight: 300;
-    padding: 0 1em;
+  .top {
+    background-color: #a5a5a5;
+    color: rgb(0, 0, 0);
+    grid-column: left / right;
+    grid-row: top;
+    display: flex;
   }
 
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  /* clearfix */
-  ul::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-
-  li {
-    display: block;
-    float: left;
-  }
-
-  .selected {
+  .heading {
+    font-family: dienstag, sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 70px;
+    color: #fafafa;
     position: relative;
-    display: inline-block;
+    top: 5px;
+    margin: 0;
+    padding-left: 10px;
+  }
+  .app-logo {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top: 10px;
+    padding-left: 10px;
   }
 
-  .selected::after {
-    position: absolute;
-    content: "";
-    width: calc(100% - 1em);
-    height: 2px;
-    background-color: rgb(255, 62, 0);
-    display: block;
-    bottom: -1px;
+  .menu {
+    height: 30px;
+    background-color: #585858;
+    color: #fff;
+    grid-column: left / right;
+    grid-row: menu;
+    display: grid;
+    grid-template-columns: repeat(10, 150px);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 5px;
+  }
+
+  span {
+    position: relative;
+    top: 2px;
+    padding-top: 2px;
+    text-align: center;
   }
 
   a {
+    color: #fff;
+    cursor: pointer;
     text-decoration: none;
-    padding: 1em 0.5em;
-    display: block;
+  }
+
+  a:hover,
+  .selected {
+    text-decoration: underline;
   }
 </style>
 
-<nav>
-  <ul>
-    <li>
-      <a class={segment === undefined ? 'selected' : ''} href=".">home</a>
-    </li>
-    <li>
-      <a
-        class={segment === 'image-gallery' ? 'selected' : ''}
-        href="image-gallery">
-        image-gallery
-      </a>
-    </li>
-  </ul>
-</nav>
+<div class="top">
+  <img src="/image/_DSC1579.32ba4a92.png" class="app-logo" alt="logo" />
+  <div class="heading">ELVIRA ROOS</div>
+</div>
+<div class="menu">
+  <span>
+    <a
+      class={segment === 'image-gallery' ? 'selected' : ''}
+      href="image-gallery">
+      image-gallery
+    </a>
+  </span>
+  <span>
+    <a class={segment === 'cv' ? 'selected' : ''} href="cv">cv / reel</a>
+  </span>
+</div>

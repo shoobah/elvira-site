@@ -5,17 +5,26 @@
 </script>
 
 <style>
-  main {
+  .all {
+    display: grid;
+    grid-template-rows: [top] 100px [menu] 30px [main] auto;
+    grid-template-columns: [left] auto [center] 95% [right] auto;
+    grid-row-gap: 0px;
     position: relative;
-    background-color: white;
-    padding: 2em;
-    margin: 0 auto;
-    box-sizing: border-box;
+  }
+
+  main {
+    padding-top: 5px;
+    grid-row: main;
+    grid-column: left / right;
   }
 </style>
 
-<Nav {segment} />
-
-<main>
-  <slot />
-</main>
+<div class="all">
+  <Nav {segment} />
+  <main>
+    <div>
+      <slot />
+    </div>
+  </main>
+</div>

@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { fade } from "svelte/transition";
 
   export let baseUrl = "";
 
@@ -24,13 +25,10 @@
   .smallImage:hover {
     box-shadow: 0 0 10px #000000c4;
   }
-
-  .bigImage {
-    width: 100%;
-  }
 </style>
 
 <img
+  transition:fade
   on:contextmenu={e => {
     e.preventDefault();
   }}

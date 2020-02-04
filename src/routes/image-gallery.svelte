@@ -1,6 +1,7 @@
 <script>
   import images from "../components/images.json";
   import ImageGrid from "../components/image-grid.svelte";
+  import BigImage from "../components/big-image.svelte";
 
   let selectedImage = images.filenames[0] + ".jpg";
 
@@ -16,16 +17,11 @@
   }
 
   .the-grid-wrapper {
-    grid-column-start: grid;
+    grid-column: grid;
+    padding: 0 5px;
   }
-
   .the-image-wrapper {
-    grid-column-start: image;
-  }
-
-  .the-image {
-    width: 100%;
-    border: solid 1px black;
+    grid-column: image;
   }
 </style>
 
@@ -34,8 +30,6 @@
     <ImageGrid {images} on:select={imageSelected} cssClass="the-grid" />
   </div>
   <div class="the-image-wrapper">
-    {#if selectedImage}
-      <img src={selectedImage} class="the-image" alt="" />
-    {/if}
+    <BigImage url={selectedImage} />
   </div>
 </div>
