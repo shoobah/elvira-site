@@ -3,17 +3,28 @@
   import { fade } from "svelte/transition";
   export let url = "";
 
-  let visible = true;
+  let visible = false;
+  const loaded = new Map();
 
-  beforeUpdate(() => {
-    // visible = false;
-    console.log("before visible", visible);
-  });
+  function lazy(node, data) {
+    if (loaded.has(data.src)) {
+      node.setAttribute("src", data.src);
+    } else {
+      // simulate slow loading network
+      setTimeout(() => {
+        const img = new Image();
+        img.src = data.src;
+        img.onload = () => {
+          loaded.set(data.src, img);
+          node.setAttribute("src", data.src);
+        };
+      }, 2000);
+    }
 
-  afterUpdate(() => {
-    // visible = true;
-    console.log("after visible", visible);
-  });
+    return {
+      destroy() {} // noop
+    };
+  }
 </script>
 
 <style>
@@ -44,6 +55,6 @@
 
 <div class="the-image-wrapper">
   {#if visible}
-    <img src={url} class="the-image" alt="" />
+    <img src={url} class="the-image" alt="" use:lazy={{ src: url }} />
   {/if}
 </div>

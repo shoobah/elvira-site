@@ -69,7 +69,7 @@
 </div>
 <div class="menu">
   <span>
-    <a class={segment === undefined ? 'selected' : ''} href="/">
+    <a rel="prefetch" class={segment === undefined ? 'selected' : ''} href="/">
       image-gallery
     </a>
   </span>
