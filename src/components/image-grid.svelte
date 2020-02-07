@@ -1,10 +1,9 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import Thumb from "./thumbnail.svelte";
+  import Thumbnail from "./thumbnail.svelte";
 
   const dispatch = createEventDispatcher();
 
-  export let cssClass = "";
   export let images = {};
 
   function imageClicked(e) {
@@ -18,15 +17,16 @@
   .image-grid {
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: 92px;
+    grid-template-rows: 92px;
+    grid-template-columns: auto;
     align-content: start;
   }
 </style>
 
-<div class="{cssClass} image-grid">
+<div class="image-grid">
   {#if images.filenames}
     {#each images.filenames as i}
-      <Thumb baseUrl={i} on:click={imageClicked} />
+      <Thumbnail baseUrl={i} on:click={imageClicked} />
     {/each}
   {/if}
 </div>

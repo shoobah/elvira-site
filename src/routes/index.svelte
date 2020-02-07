@@ -13,21 +13,22 @@
 <style>
   .image-gallery {
     display: grid;
-    grid-template-columns: [grid] 100px [image] 6fr;
+    grid-template-rows: [grid] 100px [image] 6fr;
+    grid-template-columns: auto;
   }
 
   .the-grid-wrapper {
-    grid-column: grid;
+    grid-row: grid;
     padding: 0 5px;
   }
   .the-image-wrapper {
-    grid-column: image;
+    grid-row: image;
   }
 </style>
 
 <div class="image-gallery">
   <div class="the-grid-wrapper">
-    <ImageGrid {images} on:select={imageSelected} cssClass="the-grid" />
+    <ImageGrid {images} on:select={imageSelected} />
   </div>
   <div class="the-image-wrapper">
     <BigImage url={selectedImage} />
