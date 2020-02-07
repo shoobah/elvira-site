@@ -74,6 +74,8 @@
     </a>
   </span>
   <span>
-    <a class={segment === 'cv' ? 'selected' : ''} href="cv">cv / reel</a>
+    <a rel="prefetch" class={segment === 'cv' ? 'selected' : ''} href="cv">
+      cv / reel
+    </a>
   </span>
 </div>
